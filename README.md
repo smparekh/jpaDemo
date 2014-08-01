@@ -7,7 +7,7 @@ DB: Postgres 9.3.4
 JDBC Driver: postgresql-9-3-1102.jdbc4.jar  
 App Server: JBoss EAP 6.1+
 
-DB Schema
+Table Schema
 ---------
 ```SQL
 CREATE TABLE "User"
