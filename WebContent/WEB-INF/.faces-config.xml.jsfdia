@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#insertPerson.xhtml"
+  PATH="/insertPerson.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#insertPerson.xhtml:0" NAME="item"
+   PATH="/insertPerson.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="persisted:#{userController.persistToDB}:#insertSuccess.xhtml"
+    NAME="output" PATH="/insertSuccess.xhtml"
+    TARGET="rules:#insertSuccess.xhtml"
+    TITLE="#{userController.persistToDB}:persisted" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="error:#{userCollection.persistToDB}:#error.xhtml" NAME="output1"
+    PATH="/error.xhtml" TARGET="rules:#error.xhtml"
+    TITLE="#{userCollection.persistToDB}:error" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#insertSuccess.xhtml"
+  PATH="/insertSuccess.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#error.xhtml" PATH="/error.xhtml"
+  SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

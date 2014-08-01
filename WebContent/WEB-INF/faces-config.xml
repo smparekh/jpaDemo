@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <managed-bean>
+  <managed-bean-name>userController</managed-bean-name>
+  <managed-bean-class>com.redhat.bootcamp.UserController</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>firstName</property-name>
+   <property-class>java.lang.String</property-class>
+   <value/>
+  </managed-property>
+  <managed-property>
+   <property-name>lastName</property-name>
+   <property-class>java.lang.String</property-class>
+   <value/>
+  </managed-property>
+  <managed-property>
+   <property-name>id</property-name>
+   <property-class>java.lang.Integer</property-class>
+   <value>0</value>
+  </managed-property>
+ </managed-bean>
+ <navigation-rule>
+  <display-name>insertPerson</display-name>
+  <from-view-id>/insertPerson.xhtml</from-view-id>
+  <navigation-case>
+   <from-action>#{userController.persistToDB}</from-action>
+   <from-outcome>persisted</from-outcome>
+   <to-view-id>/insertSuccess.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{userCollection.persistToDB}</from-action>
+   <from-outcome>error</from-outcome>
+   <to-view-id>/error.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <application/>
+</faces-config>
