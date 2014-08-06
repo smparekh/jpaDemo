@@ -6,6 +6,8 @@ package com.redhat.bootcamp;
 import com.redhat.bootcamp.User;
 
 import javax.annotation.Resource;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import javax.transaction.UserTransaction;
 
@@ -80,26 +82,29 @@ public class UserController {
 	public String persistToDB() throws Exception {
 		em = emf.createEntityManager();
 		aUser.setId(0);
+
 		try {
-			if (aUser.getfirstName().isEmpty() || aUser.getlastName().isEmpty()) {
+			if (aUser.getfirstName().trim().length() <= 0 || aUser.getlastName().trim().length() <= 0) {
 				throw new Exception("No First Name or Last Name.");
 			}
-			utx.begin();
-			em.joinTransaction();
-			em.persist(aUser);
-			//em.flush();
-			utx.commit();
-		} catch (Exception e) {
-			try {
-				utx.rollback();
-				return "error";
-			} catch (Exception f) {
-				
+			else {
+				utx.begin();
+				em.joinTransaction();
+				em.persist(aUser);
+				//em.flush();
+				utx.commit();
+				return "persisted";
 			}
+		} catch (Exception e) {
+			System.out.println(utx.getStatus());
+			if (utx.getStatus() != 6) {
+				utx.rollback();
+			}
+			FacesContext.getCurrentInstance().addMessage("fName", new FacesMessage("Error: Empty First or Last Name."));
+			return "whitespace";
 		} finally {
 			em.close();
 		}
-		return "persisted";
 	}
 
 }

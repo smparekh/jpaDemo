@@ -29,11 +29,6 @@
    <from-outcome>persisted</from-outcome>
    <to-view-id>/insertSuccess.xhtml</to-view-id>
   </navigation-case>
-  <navigation-case>
-   <from-action>#{userCollection.persistToDB}</from-action>
-   <from-outcome>error</from-outcome>
-   <to-view-id>/error.xhtml</to-view-id>
-  </navigation-case>
  </navigation-rule>
  <application/>
 </faces-config>
