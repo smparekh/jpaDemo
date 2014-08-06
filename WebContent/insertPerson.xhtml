@@ -11,13 +11,13 @@
 	     <h:form>
             <h:panelGrid columns="2">
                 <h:outputText value="First Name"></h:outputText>
-                <h:inputText value="#{userController.firstName}"></h:inputText>
+                <h:inputText id="fName" value="#{userController.firstName}" required="true" requiredMessage="First Name is required."></h:inputText>
                 <h:outputText value="Last Name"></h:outputText>
-                <h:inputText value="#{userController.lastName}"></h:inputText>
-                <!-- <h:outputText value="ID"></h:outputText>
-                <h:inputText value="#{userController.id}"></h:inputText> -->
+                <h:inputText id="lName" value="#{userController.lastName}" required="true" requiredMessage="Last Name is required."></h:inputText>
             </h:panelGrid>
-            <h:commandButton value="Insert into DB" action="#{userController.persistToDB}"></h:commandButton>
+            <h:commandButton value="Insert into DB" action="#{userController.persistToDB}"></h:commandButton><br/>
+            <h:message for="fName"></h:message><br/>
+            <h:message for="lName"></h:message>
         </h:form>
 	</ui:define>
 </ui:composition>
