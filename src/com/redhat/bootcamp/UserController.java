@@ -96,7 +96,7 @@ public class UserController {
 				return "persisted";
 			}
 		} catch (Exception e) {
-			System.out.println(utx.getStatus());
+			// 6 = Normal Status
 			if (utx.getStatus() != 6) {
 				utx.rollback();
 			}
